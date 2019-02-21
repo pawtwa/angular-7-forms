@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
-      <form (ngSubmit)="submitForm(f)" #f="ngForm">
+      <form (ngSubmit)="submitForm()" #f="ngForm">
         <div id="user-data">
           <div class="form-group">
             <label for="username">Username</label>
@@ -11,6 +11,7 @@
               class="form-control"
               ngModel
               name="username"
+              required
             >
           </div>
           <button class="btn btn-default" type="button">Suggest an Username</button>
@@ -22,8 +23,13 @@
               class="form-control"
               ngModel
               name="email"
+              required
+              email
+              #email="ngModel"
             >
+            <span class="help-block" *ngIf="email.touched && !email.valid">Please enter a valid email!</span>
           </div>
+          <p ngClass="alert alert-danger" *ngIf="email.touched && !email.valid">Please enter a valid value!</p>
         </div>
         <div class="form-group">
           <label for="secret">Secret Questions</label>
@@ -37,7 +43,11 @@
             <option value="teacher">Your first teacher?</option>
           </select>
         </div>
-        <button class="btn btn-primary" type="submit">Submit</button>
+        <button 
+          class="btn btn-primary" 
+          type="submit"
+          [disabled]="!f.valid"
+        >Submit</button>
       </form>
     </div>
   </div>
