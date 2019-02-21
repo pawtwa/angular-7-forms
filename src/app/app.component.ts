@@ -10,8 +10,12 @@ export class AppComponent {
   // @ViewChild('f') form: ElementRef;
   @ViewChild('f') form: NgForm;
 
+  defaultQuestion: string = "pet";
+  defaultEmail: string = "";
+  defaultUsername: string = "";
+
   suggestUserName() {
-    const suggestedName = 'Superuser';
+    const suggestedName = "Superuser";
   }
 
   submitForm(form: NgForm) {
