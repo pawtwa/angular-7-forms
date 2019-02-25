@@ -13,8 +13,10 @@ export class AppComponent {
   defaultQuestion: string = "pet";
   defaultEmail: string = "";
   defaultUsername: string = "";
-  
+
   answer: string = "";
+
+  genders = ['male', 'female'];
 
   suggestUserName() {
     const suggestedName = "Superuser";
