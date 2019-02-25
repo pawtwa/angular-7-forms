@@ -10,13 +10,19 @@ export class AppComponent {
   // @ViewChild('f') form: ElementRef;
   @ViewChild('f') form: NgForm;
 
-  defaultQuestion: string = "pet";
-  defaultEmail: string = "";
-  defaultUsername: string = "";
-
-  answer: string = "";
-
+  defaultQuestion: string = 'pet';
+  defaultEmail: string = '';
+  defaultUsername: string = '';
+  answer: string = '';
   genders = ['male', 'female'];
+  user = {
+    username: '',
+    email: '',
+    secretQuestion: '',
+    answer: '',
+    gender: ''
+  };
+  submitted: boolean = false;
 
   suggestUserName() {
     const suggestedName = 'Superuser';
@@ -48,5 +54,11 @@ export class AppComponent {
 
   submitForm(form: NgForm) {
     console.log(this.form);
+    this.submitted = true;
+    this.user.username = this.form.value.userData.username;
+    this.user.email = this.form.value.userData.email;
+    this.user.secretQuestion = this.form.value.secret;
+    this.user.answer = this.form.value.answer;
+    this.user.gender = this.form.value.gender;
   }
 }
