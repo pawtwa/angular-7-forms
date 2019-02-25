@@ -19,7 +19,31 @@ export class AppComponent {
   genders = ['male', 'female'];
 
   suggestUserName() {
-    const suggestedName = "Superuser";
+    const suggestedName = 'Superuser';
+    /**
+     * nadpisuje wszystkie wartości - trzeba podać wszystkie zmienne formularza
+     */
+    // this.form.setValue({
+    //   userData: {
+    //     username: suggestedName,
+    //     email: ''
+    //   },
+    //   secret: 'pet',
+    //   answer: '',
+    //   gender: 'male'
+    // });
+    /**
+     * nadpisuje wybrane wartości
+     */
+    this.form.form.patchValue({
+      userData: {
+        username: suggestedName,
+        email: ''
+      },
+      secret: 'pet',
+      answer: '',
+      gender: 'male'
+    });
   }
 
   submitForm(form: NgForm) {
